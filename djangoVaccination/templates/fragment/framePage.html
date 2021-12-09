@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <!-- ----- début fragmentHeader -->
+  <head>
+    <title>Vaccination contre le COVID-19</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static "images/logo_vaccin.png" %}"
+    type="image/icon_type" /> <link href="{% static "css/bootstrap.css" %}"
+    rel="stylesheet" /> <link href="{% static "css/perso_css.css" %}"
+    rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <!-- ----- fin fragmentHeader -->
+
+  <body>
+    {% block background_block %}
+    {% comment %} For background in the heading of the page {% endcomment %}
+    {% endblock %}
+
+    <div class="container">
+        <!-- ----- début fragmentMenu -->
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <div class="bouton-menu" onclick="ouvrirMenu(this)">
+                    <div class="containerBarre">
+                    <div class="barre1"></div>
+                    <div class="barre2"></div>
+                    <div class="barre3"></div>
+                    </div>
+                </div>
+                <a class="navbar-brand" href="{% url 'index' %}"
+                    >HK & 3T</a
+                >
+                </div>
+
+                <div class="menu ferme">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                    <a href="#" onclick="ouvrirSousMenu(this)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Gestion des vaccins <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'vaccin:viewAll' %}">Liste des vaccins</a></li>
+                        <li><a href="router2.php?action=vaccinReadLabel&target=vaccinReadOne">Sélection d'un vaccin par son label</a></li>
+                        <li><a href="router2.php?action=vaccinCreate">Ajout d'un vaccin</a></li>
+                        <li><a href="router2.php?action=vaccinReadLabel&target=vaccinDeleted">Suppression d'un vaccin</a></li>
+                        <li><a href="router2.php?action=vaccinModifyDose">Mise à jour d'un vaccin</a></li>
+                    </ul>
+                    </li>
+
+                    <li class="dropdown">
+                    <a href="#" onclick="ouvrirSousMenu(this)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                        >Gestion des centres <span class="caret"></span
+                    ></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="router2.php?action=centreReadAll">Liste des centres</a></li>
+                        <li><a href="router2.php?action=centreReadLabel&target=centreReadOne">Sélection d'un centre</a></li>
+                        <li><a href="router2.php?action=centreCreate">Ajout d'un centre</a></li>
+                        <li><a href="router2.php?action=centreReadLabel&target=centreDeleted">Suppression d'un centre</a></li>
+                    </ul>
+                    </li>
+
+                    <li class="dropdown">
+                    <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                        >Gestion des patients <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="router2.php?action=patientReadAll">Liste des patients</a></li>
+                        <li><a href="router2.php?action=patientReadId&target=patientReadOne"=>Affichage d'un patient par son id</a></li>
+                        <li><a href="router2.php?action=patientCreate">Ajout d'un patient</a></li>
+                        <li><a href="router2.php?action=patientReadDistinct">Liste sans doublon des addresses de patients</a></li>
+                        <li><a href="router2.php?action=quantityByAddress">Nombre de patients par son addresse</a></li>
+                        <li><a href="router2.php?action=patientReadId&target=patientDeleted">Suppression d'un patient</a></li>
+                    </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                        >Gestion des stocks <span class="caret"></span>
+                    <ul class="dropdown-menu">
+                        <li><a href="router2.php?action=stockReadDosesByVaccinByCenter">Liste des centres avec le nombre de doses de chaque vaccin</a></li>
+                        <li><a href="router2.php?action=stockReadDosesByCenter">Nombre global de doses des centres</a></li>
+                        <li><a href="router2.php?action=stockAdd&target=stockAdded">Attribution de vaccins pour un centre</a></li>
+                        <li><a href="router2.php?action=stockAdd&target=stockDeleted">Suppression d'un stock</a></li>
+                    </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                        >Gestion des rendez-vous<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="router2.php?action=rdvReadPatient&target=rdvPropos">Dossier de vaccination d'un patient</a></li>
+                        <li><a href="router2.php?action=rdvReadAll">Liste des rendez-vous</a></li>
+                    </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                        >Documentation <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="router2.php?action=innov1">Patient avec doses complètes</a></li>
+                        <li><a href="router2.php?action=innov2&target=getMap">Trouver votre itinéraire</a></li>
+                        <li><a href="router2.php?action=innov3">Tableau de bord COVID-19</a></li>
+                        <li><a href="router2.php?action=pointDeVue">Vue global sur ce projet</a></li>
+                        <li><a href="router2.php?action=doc1">Documentation innovation 1</a></li>
+                        <li><a href="router2.php?action=doc2">Documentation innovation 2</a></li>
+                        <li><a href="router2.php?action=doc3">Documentation innovation 3</a></li>
+                        <li><a href="router2.php?action=doc4">Documentation innovation 4</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- ----- fin fragmentMenu -->
+
+        {% block body_block %}
+        <!-- Anything outside of this will be inherited if you extend!! -->
+        {% endblock %}
+    </div>   
+
+    <div class="signature">
+      <h4>Huu Khai NGUYEN - Thanh Tri TRAN</h4>
+    </div>
+
+    <script type="text/javascript" src="{% static "js/changeBg.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/menu.js" %}"></script>
+  </body>
+</html>

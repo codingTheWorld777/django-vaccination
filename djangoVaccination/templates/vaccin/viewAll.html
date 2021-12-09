@@ -1,0 +1,41 @@
+{% extends "fragment/framePage.html" %}
+    {% block body_block %}
+    <!-- Jumbotron -->
+    <div class="jumbotron" style="font-family: Verdana, Geneva, sans-serif ">
+        <h1 style="color: white">Vaccination Covid 2021 </h1>
+        <p style="color: white">Quoi qu'il en coûte ....</p>
+    </div>
+
+    <form class="navbar-form navbar-right" role="search" method="get" action="router2.php" style="margin-bottom: 14px">
+        <!-- format the form -->
+        {{ form.as_p }}
+        <!-- Ensure the security of the form submitting -->
+        {% csrf_token %}
+
+        <input type="hidden" name="action" value="searchVaccin">
+        <div class="form-group">
+            <input name="searching" type="text" class="form-control" size='44' placeholder="Rechercher par label...">
+        </div>
+        <button type="submit" class="btn btn-danger">Rechercher</button>
+    </form>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr style="background-color: #AA6C39">
+                <th scope="col">id</th>
+                <th scope="col">label</th>
+                <th scope="col">doses</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for vaccin in vaccin_info %}
+                <tr>
+                    <td>{{vaccin.id}}</td>
+                    <td>{{vaccin.label}}</td>
+                    <td>{{vaccin.doses}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
