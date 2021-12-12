@@ -1,0 +1,14 @@
+{% extends "fragment/framePage.html" %}
+    {% block body_block %}
+    <!-- Ensure the security of the form submitting -->
+    {% csrf_token %}
+    
+    <form role="form" method='POST' action="{% url 'vaccin:vaccinCreated' %}">
+        <div class="form-group">
+            {% comment %} <input type="hidden" name='action' value='vaccinCreated'>         {% endcomment %}
+            <label for="id">label : </label><input type="text" name='label' size='75' value=''>                           
+            <label for="id">doses : </label><input type="text" name='doses' value='2'>            
+        </div>
+        <button class="btn btn-primary" type="submit">Go</button>
+    </form>
+    {% endblock %}

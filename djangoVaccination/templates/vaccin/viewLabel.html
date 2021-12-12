@@ -1,0 +1,17 @@
+{% extends "fragment/framePage.html" %}
+    {% block body_block %}
+    <!-- Ensure the security of the form submitting -->
+    
+    <form role="form" method='GET' action="{% url target %}">
+        <div class="form-group">
+            {% comment %} <input type="hidden" name='action' value={{target}}> {% endcomment %}
+            <label for="label">Choisir un vaccin : </label> 
+            <select class="form-control" id='label' name='label' style="width: 100px">
+                {% for vaccin in vaccin_info %}
+                    <option>{{ vaccin.label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </form>
+    {% endblock %}

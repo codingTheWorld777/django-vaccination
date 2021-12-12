@@ -1,14 +1,6 @@
 {% extends "fragment/framePage.html" %}
     {% block body_block %}
-    <!-- Jumbotron -->
-    <div class="jumbotron" style="font-family: Verdana, Geneva, sans-serif ">
-        <h1 style="color: white">Vaccination Covid 2021 </h1>
-        <p style="color: white">Quoi qu'il en coûte ....</p>
-    </div>
-
     <form class="navbar-form navbar-right" role="search" method="get" action="router2.php" style="margin-bottom: 14px">
-        <!-- format the form -->
-        {{ form.as_p }}
         <!-- Ensure the security of the form submitting -->
         {% csrf_token %}
 

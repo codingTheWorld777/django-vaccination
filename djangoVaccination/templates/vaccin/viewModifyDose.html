@@ -1,0 +1,35 @@
+{% extends "fragment/framePage.html" %} 
+    {% block body_block %}
+    <form class="navbar-form navbar-right" role="search" method="get" action="router2.php" style="margin-bottom: 14px">
+        <input type="hidden" name="action" value="searchVaccin" />
+        <div class="form-group">
+            <input
+            name="searching"
+            type="text"
+            class="form-control"
+            size="44"
+            placeholder="Rechercher par label..."
+            />
+        </div>
+        <button type="submit" class="btn btn-danger">Rechercher</button>
+    </form>
+
+    <br /><br />
+
+    <form role="form" method="GET" action="{% url 'vaccin:vaccinUpdateDose' %}" style="margin-top: 8px">
+        <div class="form-group">
+            {% comment %} <input type="hidden" name="action" value="vaccinUpdateDose" /> {% endcomment %}
+            <label for="label">vaccin_label : </label>
+            <select class="form-control" id="label" name="label" style="width: 100px">
+                {% for vaccin in vaccin_info %}
+                    <option>{{ vaccin.label }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="quantite" style="margin-top: 8px">Nombre des doses ajoutées :</label>
+            <input type="number" id="quantite" name="quantite" value="1" />
+        </div>
+        <button class="btn btn-primary" type="submit">Ajouter</button>
+    </form>
+
+    {% endblock %}

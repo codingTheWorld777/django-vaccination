@@ -45,11 +45,11 @@
                         Gestion des vaccins <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="{% url 'vaccin:viewAll' %}">Liste des vaccins</a></li>
-                        <li><a href="router2.php?action=vaccinReadLabel&target=vaccinReadOne">Sélection d'un vaccin par son label</a></li>
-                        <li><a href="router2.php?action=vaccinCreate">Ajout d'un vaccin</a></li>
-                        <li><a href="router2.php?action=vaccinReadLabel&target=vaccinDeleted">Suppression d'un vaccin</a></li>
-                        <li><a href="router2.php?action=vaccinModifyDose">Mise à jour d'un vaccin</a></li>
+                        <li><a href="{% url 'vaccin:vaccinReadAll' %}">Liste des vaccins</a></li>
+                        <li><a href="{% url 'vaccin:vaccinReadLabel' %}">Sélection d'un vaccin par son label</a></li>
+                        <li><a href="{% url 'vaccin:vaccinCreate' %}">Ajout d'un vaccin</a></li>
+                        <li><a href="{% url 'vaccin:vaccinDelete' %}">Suppression d'un vaccin</a></li>
+                        <li><a href="{% url 'vaccin:vaccinModifyDose' %}">Mise à jour d'un vaccin</a></li>
                     </ul>
                     </li>
 
@@ -121,6 +121,9 @@
 
         {% block body_block %}
         <!-- Anything outside of this will be inherited if you extend!! -->
+            {% block jumbotron_block %}
+            {% comment %} Jumbotron file {% endcomment %}
+            {% endblock %}
         {% endblock %}
     </div>   
 

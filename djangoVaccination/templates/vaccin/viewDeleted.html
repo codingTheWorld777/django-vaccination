@@ -1,0 +1,29 @@
+{% extends 'fragment/framePage.html' %}
+    {% block body_block %}
+    <div style="margin-bottom: 20px">
+        <h3>Le vaccin {{ label }} a bien été supprimé.
+            <br> Voici la nouvelle liste des vaccins : <br>
+        </h3>
+    </div>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr style="background-color: #AA6C39">
+                <th scope="col">id</th>
+                <th scope="col">label</th>
+                <th scope="col">doses</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+        {% comment %} La liste des vaccins est dans une variable $results {% endcomment %}
+        {% for vaccin in vaccin_info %}
+            <tr>
+                <td>{{ vaccin.0 }}</td>
+                <td>{{ vaccin.1 }}</td>
+                <td>{{ vaccin.2 }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
