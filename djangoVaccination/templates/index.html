@@ -1,11 +1,11 @@
-{% extends "fragment/framePage.html" %} {% block body_block %}
+{% extends "fragment/framePage.html" %} 
     {% block background_block%}
-    {% comment %} <div class="parallax">
+    <div class="parallax">
         <div class="titre">Vaccination contre le COVID-19 !</div>
-    </div> {% endcomment %}
+    </div> 
     {% endblock %}
 
-    {{ form.as_p }}
+    {% block body_block %}
     <!-- Ensure the security of the form submitting -->
     {% csrf_token %}
     <div class="jumbotron">
@@ -23,4 +23,4 @@
     <div class="jumbotron">
         <a href="router2.php?action=rdvReadAll"><h1 style="color: white; font-family: 'Red Rose', cursive;">Liste des rendez-vous !</h1></a>
     </div>
-{% endblock %}
+    {% endblock %}
