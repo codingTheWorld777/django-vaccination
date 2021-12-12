@@ -22,4 +22,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('vaccin/', include("vaccin.urls")),
+    path('centre/', include("centre.urls")),
+    path('patient/', include("patient.urls")),
+    path('stock/', include("stock.urls")),
+    path('rdv/', include("rdv.urls")),
+    path('search/', include("search.urls")),
 ]

@@ -1,24 +1,21 @@
 {% extends "fragment/framePage.html" %}
-    {% block background_block%}
-    <div class="parallax">
+    {% block background_block %}
+    <div class="parallax parallax2">
         <div class="titre">
-            Découvrez nos vaccins...
+            Découvrez nos centre de vaccination...
         </div>
     </div>
-    {% endblock%}
+    {% endblock %}
 
     {% block body_block %}
     {% block jumbotron_block %}
         {% include "fragment/frameJumbotron.html" %}
-    {% endblock %}
+    {% endblock%}
 
     <form class="navbar-form navbar-right" role="search" method="get" action="router2.php" style="margin-bottom: 14px">
-        <!-- Ensure the security of the form submitting -->
-        {% csrf_token %}
-
-        <input type="hidden" name="action" value="searchVaccin">
+        <input type="hidden" name="action" value="searchCentre">
         <div class="form-group">
-            <input name="searching" type="text" class="form-control" size='44' placeholder="Rechercher par label...">
+            <input name="searching" type="text" class="form-control" size='44' placeholder="Rechercher par label du centre...">
         </div>
         <button type="submit" class="btn btn-danger">Rechercher</button>
     </form>
@@ -28,17 +25,17 @@
             <tr style="background-color: #AA6C39">
                 <th scope="col">id</th>
                 <th scope="col">label</th>
-                <th scope="col">doses</th>
+                <th scope="col">adresse</th>
             </tr>
         </thead>
 
         <tbody>
-            {% for vaccin in vaccin_info %}
-                <tr>
-                    <td>{{vaccin.id}}</td>
-                    <td>{{vaccin.label}}</td>
-                    <td>{{vaccin.doses}}</td>
-                </tr>
+            {% for centre in centre_info %}
+            <tr>
+                <td>{{ centre.id }}</td>
+                <td>{{ centre.label }}</td>
+                <td>{{ centre.adresse }}</td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>

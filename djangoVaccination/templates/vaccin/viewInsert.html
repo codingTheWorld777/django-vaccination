@@ -1,9 +1,18 @@
 {% extends "fragment/framePage.html" %}
+    {% block background_block %}
+    <div class="parallax">
+        <div class="titre"><br>Ajoutez un vaccin à notre centre de vaccination!</div>
+    </div>
+    {% endblock %}
+
     {% block body_block %}
+    {% block jumbotron_block %}
+        {% include "fragment/frameJumbotron.html" %}
+    {% endblock %}
+
     <!-- Ensure the security of the form submitting -->
     {% csrf_token %}
-    
-    <form role="form" method='POST' action="{% url 'vaccin:vaccinCreated' %}">
+    <form role="form" method='POST' action="{% url 'vaccin:vaccinCreated' %}" style="margin-bottom: 8px">
         <div class="form-group">
             {% comment %} <input type="hidden" name='action' value='vaccinCreated'>         {% endcomment %}
             <label for="id">label : </label><input type="text" name='label' size='75' value=''>                           

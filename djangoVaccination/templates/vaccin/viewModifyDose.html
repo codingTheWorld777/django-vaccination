@@ -1,22 +1,28 @@
 {% extends "fragment/framePage.html" %} 
+    {% block background_block %}
+    <div class="parallax">
+        <div class="titre">
+            Modifiez la quantité d'une dose en ajoutant des nouvelles ...
+        </div>
+    </div>
+    {% endblock %}
+
     {% block body_block %}
+    {% block jumbotron_block %}
+        {% include "fragment/frameJumbotron.html" %}
+    {% endblock %}
+
     <form class="navbar-form navbar-right" role="search" method="get" action="router2.php" style="margin-bottom: 14px">
         <input type="hidden" name="action" value="searchVaccin" />
         <div class="form-group">
-            <input
-            name="searching"
-            type="text"
-            class="form-control"
-            size="44"
-            placeholder="Rechercher par label..."
-            />
+            <input name="searching" type="text" class="form-control" size="44" placeholder="Rechercher par label..."/>
         </div>
         <button type="submit" class="btn btn-danger">Rechercher</button>
     </form>
 
     <br /><br />
 
-    <form role="form" method="GET" action="{% url 'vaccin:vaccinUpdateDose' %}" style="margin-top: 8px">
+    <form role="form" method="GET" action="{% url 'vaccin:vaccinUpdateDose' %}" style="margin-top: 8px; margin-bottom: 8px">
         <div class="form-group">
             {% comment %} <input type="hidden" name="action" value="vaccinUpdateDose" /> {% endcomment %}
             <label for="label">vaccin_label : </label>

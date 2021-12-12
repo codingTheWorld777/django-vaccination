@@ -1,8 +1,16 @@
 {% extends "fragment/framePage.html" %}
+    {% block background_block %}
+    <div class="parallax">
+        <div class="titre">Découvrez nos vaccins...</div>
+    </div>
+    {% endblock %}
+
     {% block body_block %}
-    <!-- Ensure the security of the form submitting -->
+    {% block jumbotron_block %}
+        {% include "fragment/frameJumbotron.html" %}
+    {% endblock %}
     
-    <form role="form" method='GET' action="{% url target %}">
+    <form role="form" method='GET' action="{% url target %}" style="margin-bottom: 8px">
         <div class="form-group">
             {% comment %} <input type="hidden" name='action' value={{target}}> {% endcomment %}
             <label for="label">Choisir un vaccin : </label> 

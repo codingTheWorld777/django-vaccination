@@ -58,7 +58,7 @@
                         >Gestion des centres <span class="caret"></span
                     ></a>
                     <ul class="dropdown-menu">
-                        <li><a href="router2.php?action=centreReadAll">Liste des centres</a></li>
+                        <li><a href="{% url 'centre:centreReadAll' %}">Liste des centres</a></li>
                         <li><a href="router2.php?action=centreReadLabel&target=centreReadOne">Sélection d'un centre</a></li>
                         <li><a href="router2.php?action=centreCreate">Ajout d'un centre</a></li>
                         <li><a href="router2.php?action=centreReadLabel&target=centreDeleted">Suppression d'un centre</a></li>
