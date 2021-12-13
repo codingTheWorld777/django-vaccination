@@ -1,0 +1,55 @@
+{% extends "fragment/framePage.html" %}
+    {% block background_block %}
+    <div class="parallax parallax2">
+        <div class="titre">
+            Stock des vaccins ...
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block body_block %}
+    {% block jumbotron_block %}
+        {% include "fragment/frameJumbotron.html" %}
+    {% endblock %}
+    
+    <form role="form" method="GET" action="{% url target %}" style="margin-top: 8px; margin-bottom: 8px;">
+        <div class="form-group">
+            <input type="hidden" name='action' value={{ target }}>
+            
+            <div style="display: flex; justify-content:start; margin-bottom: 24px">
+                <div style="margin-right: 40px;">
+                    <label for="centre_label">centre_label : </label>
+                    <select class="form-control" id='centre_label' name='centre_label' style="width: 120px">
+                        {% for centre in results.centre %}
+                            <option>{{ centre.0 }} : {{ centre.1 }}</option>
+                            {% comment %} <option>{{ centre : centre }}</option> {% endcomment %}
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div style="margin-left: 40px;">
+                    <label for="vaccin_label">vaccin_label : </label>
+                    <select class="form-control" id='vaccin_label' name='vaccin_label' style="width: 100px">
+                        {% for vaccin in results.vaccin %}
+                            <option>{{ vaccin.0 }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            {% if target != "stock:stockDeleted" %}
+                <div>
+                    <label for='vaccin_add'>Nombre des doses ajoutées pour le stock: </label>
+                    <input type='number' id='vaccin_add' name='vaccin_add' value='1'>
+                </div>
+            {% else %}
+            {% endif %}
+        </div>
+        
+        {% if target != "stock:stockDeleted" %}
+        <button class="btn btn-primary" type="submit">Ajouter</button>
+        {% else %}
+        <button class="btn btn-danger" type="submit">Supprimer</button>
+        {% endif %}
+    </form>
+    {% endblock %}

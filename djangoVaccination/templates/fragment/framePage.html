@@ -83,10 +83,10 @@
                         <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
                         >Gestion des stocks <span class="caret"></span>
                     <ul class="dropdown-menu">
-                        <li><a href="router2.php?action=stockReadDosesByVaccinByCenter">Liste des centres avec le nombre de doses de chaque vaccin</a></li>
-                        <li><a href="router2.php?action=stockReadDosesByCenter">Nombre global de doses des centres</a></li>
-                        <li><a href="router2.php?action=stockAdd&target=stockAdded">Attribution de vaccins pour un centre</a></li>
-                        <li><a href="router2.php?action=stockAdd&target=stockDeleted">Suppression d'un stock</a></li>
+                        <li><a href="{% url 'stock:stockReadDosesByVaccinByCenter' %}">Liste des centres avec le nombre de doses de chaque vaccin</a></li>
+                        <li><a href="{% url 'stock:stockReadDosesByCenter' %}">Nombre global de doses des centres</a></li>
+                        <li><a href="{% url 'stock:stockAdd' %}">Attribution de vaccins pour un centre</a></li>
+                        <li><a href="{% url 'stock:stockDelete' %}">Suppression d'un stock</a></li>
                     </ul>
                     </li>
 
