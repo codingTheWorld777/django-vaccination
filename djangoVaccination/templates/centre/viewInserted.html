@@ -1,47 +1,47 @@
-{% extends "fragment/framePage.html" %} 
-{% block body_block %} 
+{% extends "fragment/framePage.html" %}
+    {% block body_block %}
     {% block jumbotron_block %}
         {% include "fragment/frameJumbotron.html" %}
-    {% endblock %}
+    {% endblock %}  
 
     {% if result %}
-    <h3>Le nouveau vaccin a été ajouté</h3>
+    <h3>Le nouveau centre a été ajouté</h3>
     <ul>
         <li>id = {{ id }}</li>
         <li>label = {{ label }}</li>
-        <li>doses = {{ doses }}</li>
+        <li>adresse = {{ adresse }}</li>
     </ul>
 
-    <h3>Voici la nouvelle liste des vaccins:</h3>
+    <h3>Voici la nouvelle liste des centres:</h3>
 
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr style="background-color: #aa6c39">
                 <th scope="col">id</th>
                 <th scope="col">label</th>
-                <th scope="col">doses</th>
+                <th scope="col">adresse</th>
             </tr>
         </thead>
         <tbody>
-            {% for vaccin in vaccin_info %}
+            {% for centre in centre_info %}
             <tr>
-                <td>{{ vaccin.id }}</td>
-                <td>{{ vaccin.label }}</td>
-                <td>{{ vaccin.doses }}</td>
+                <td>{{ centre.id }}</td>
+                <td>{{ centre.label }}</td>
+                <td>{{ centre.adresse }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 
     {% else %}
-        <h3>Problème d'insertion du Vaccin.</h3>
+        <h3>Problème d'insertion du centre.</h3>
         <h3 style="color: red" ;>
-        Veuillez vérifier toutes les infos du vaccin dans le formulaire ont été bien
-        renseignées ou le nom du vaccin est dupliqué.
+        Veuillez vérifier toutes les infos du centre dans le formulaire ont été bien
+        renseignées ou le nom du centre est dupliqué.
         </h3>
     {% endif %}
 
     <button class="btn btn-primary" style="margin-bottom: 7px" onclick="history.go(-1)" style="margin-bottom: 8px">
     Page précédente
     </button>
-{% endblock %}
+    {% endblock %}

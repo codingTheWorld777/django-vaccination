@@ -1,5 +1,9 @@
 {% extends "fragment/framePage.html" %}
     {% block body_block %}
+        {% block jumbotron_block %}
+            {% include "fragment/frameJumbotron.html" %}
+        {% endblock %}
+
         <form class="navbar-form navbar-right" role="search" method="get" action="router2.php" style="margin-bottom: 14px">
             <input type="hidden" name="action" value="searchVaccin">
             <div class="form-group">

@@ -1,0 +1,27 @@
+{% extends "fragment/framePage.html" %}
+    {% block background_block %}
+    <div class="parallax parallax2">
+        <div class="titre">
+            Découvrez nos centres de vaccination...
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block body_block %}
+    {% block jumbotron_block %}
+        {% include "fragment/frameJumbotron.html" %}
+    {% endblock %}
+
+    <form role="form" method="GET" action="{% url target %}" style="margin-bottom: 8px;">
+        <div class="form-group">
+            <input type="hidden" name='action' value={{ target }}>
+            <label for="id">Centre de vaccination : </label> <select class="form-control" id='label' name='label' style="width: 120px">
+                {% for centre in centre_info %}
+                    <option>{{ centre.id }}: {{ centre.label }} : {{ centre.adresse }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </form>
+    {% endblock %}
+    

@@ -5,8 +5,8 @@
     {% endblock %}
 
     <div style="margin-bottom: 20px">
-        <h3>Le vaccin {{ label }} a bien été supprimé.
-            <br> Voici la nouvelle liste des vaccins : <br>
+        <h3>Le centre {{ id}} : {{ label }} : {{ adresse }} a bien été supprimé.
+            <br> Voici la nouvelle liste des centres : <br>
         </h3>
     </div>
 
@@ -15,17 +15,17 @@
             <tr style="background-color: #AA6C39">
                 <th scope="col">id</th>
                 <th scope="col">label</th>
-                <th scope="col">doses</th>
+                <th scope="col">adresse</th>
             </tr>
         </thead>
         
         <tbody>
-        {% comment %} La liste des vaccins est dans une variable $results {% endcomment %}
-        {% for vaccin in vaccin_info %}
+        {% comment %} La liste des centres est dans une variable $results {% endcomment %}
+        {% for centre in centre_info %}
             <tr>
-                <td>{{ vaccin.0 }}</td>
-                <td>{{ vaccin.1 }}</td>
-                <td>{{ vaccin.2 }}</td>
+                <td>{{ centre.id }}</td>
+                <td>{{ centre.label }}</td>
+                <td>{{ centre.adresse }}</td>
             </tr>
         {% endfor %}
         </tbody>

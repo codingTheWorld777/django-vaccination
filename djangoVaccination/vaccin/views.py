@@ -63,12 +63,15 @@ def vaccinCreated(request):
         if (condition1):
             info_dict = {'result': False}
         elif (condition2):
-            # Add new vaccine to database (table 'vaccin')
-            id = ModelVaccin.insert(strip_tags(label), strip_tags(doses))
-            vaccin_info = ModelVaccin.objects.all()
+            try:
+                # Add new vaccine to database (table 'vaccin')
+                id = ModelVaccin.insert(strip_tags(label), strip_tags(doses))
+                vaccin_info = ModelVaccin.objects.all()
 
-            info_dict = {'result': True, 'id': id, 'label': label,
-                         'doses': doses, 'vaccin_info': vaccin_info}
+                info_dict = {'result': True, 'id': id, 'label': label,
+                            'doses': doses, 'vaccin_info': vaccin_info}
+            except Exception:
+                info_dict = {'result': False}
 
         return render(request, 'vaccin/viewInserted.html', context=info_dict)
 

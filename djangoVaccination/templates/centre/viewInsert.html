@@ -1,0 +1,25 @@
+{% extends "fragment/framePage.html" %}
+    {% block background_block %}
+    <div class="parallax parallax2">
+        <div class="titre">
+            Vous voulez ajouter un nouveau centre de vaccination ? <br>
+            Allez-y !
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block body_block %}
+    {% block jumbotron_block %}
+        {% include "fragment/frameJumbotron.html" %}
+    {% endblock %}
+
+    {% csrf_token %}   
+    <form role="form" method='POST' action="{% url 'centre:centreCreated' %}" style="margin-bottom: 8px;">
+        <div class="form-group">
+            <input type="hidden" name='action' value='centreCreated'>
+            <label for="id">label : </label><input type="text" name='label' size='45' value=''>                           
+            <label for="id">adresse : </label><input type="text" name='adresse' size='35' value=''>
+        </div>
+        <button class="btn btn-primary" type="submit">Go</button>
+    </form>
+    {% endblock %}

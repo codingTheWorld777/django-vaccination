@@ -59,9 +59,9 @@
                     ></a>
                     <ul class="dropdown-menu">
                         <li><a href="{% url 'centre:centreReadAll' %}">Liste des centres</a></li>
-                        <li><a href="router2.php?action=centreReadLabel&target=centreReadOne">Sélection d'un centre</a></li>
-                        <li><a href="router2.php?action=centreCreate">Ajout d'un centre</a></li>
-                        <li><a href="router2.php?action=centreReadLabel&target=centreDeleted">Suppression d'un centre</a></li>
+                        <li><a href="{% url 'centre:centreReadLabel' %}">Sélection d'un centre</a></li>
+                        <li><a href="{% url 'centre:centreCreate' %}">Ajout d'un centre</a></li>
+                        <li><a href="{% url 'centre:centreDelete' %}">Suppression d'un centre</a></li>
                     </ul>
                     </li>
 
@@ -96,21 +96,6 @@
                     <ul class="dropdown-menu">
                         <li><a href="router2.php?action=rdvReadPatient&target=rdvPropos">Dossier de vaccination d'un patient</a></li>
                         <li><a href="router2.php?action=rdvReadAll">Liste des rendez-vous</a></li>
-                    </ul>
-                    </li>
-
-                    <li class="dropdown">
-                        <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
-                        >Documentation <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="router2.php?action=innov1">Patient avec doses complètes</a></li>
-                        <li><a href="router2.php?action=innov2&target=getMap">Trouver votre itinéraire</a></li>
-                        <li><a href="router2.php?action=innov3">Tableau de bord COVID-19</a></li>
-                        <li><a href="router2.php?action=pointDeVue">Vue global sur ce projet</a></li>
-                        <li><a href="router2.php?action=doc1">Documentation innovation 1</a></li>
-                        <li><a href="router2.php?action=doc2">Documentation innovation 2</a></li>
-                        <li><a href="router2.php?action=doc3">Documentation innovation 3</a></li>
-                        <li><a href="router2.php?action=doc4">Documentation innovation 4</a></li>
                     </ul>
                     </li>
                 </ul>
