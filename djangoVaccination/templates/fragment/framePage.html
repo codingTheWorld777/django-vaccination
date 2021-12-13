@@ -70,12 +70,12 @@
                         >Gestion des patients <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="router2.php?action=patientReadAll">Liste des patients</a></li>
-                        <li><a href="router2.php?action=patientReadId&target=patientReadOne"=>Affichage d'un patient par son id</a></li>
-                        <li><a href="router2.php?action=patientCreate">Ajout d'un patient</a></li>
-                        <li><a href="router2.php?action=patientReadDistinct">Liste sans doublon des addresses de patients</a></li>
-                        <li><a href="router2.php?action=quantityByAddress">Nombre de patients par son addresse</a></li>
-                        <li><a href="router2.php?action=patientReadId&target=patientDeleted">Suppression d'un patient</a></li>
+                        <li><a href="{% url 'patient:patientReadAll' %}">Liste des patients</a></li>
+                        <li><a href="{% url 'patient:patientReadId' %}"=>Affichage d'un patient par son id</a></li>
+                        <li><a href="{% url 'patient:patientCreate' %}">Ajout d'un patient</a></li>
+                        <li><a href="{% url 'patient:patientReadDistinct' %}">Liste sans doublon des addresses de patients</a></li>
+                        <li><a href="{% url 'patient:quantityByAdresse' %}">Nombre de patients par son addresse</a></li>
+                        <li><a href="{% url 'patient:patientDelete' %}">Suppression d'un patient</a></li>
                     </ul>
                     </li>
 

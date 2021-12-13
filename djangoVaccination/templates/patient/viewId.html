@@ -1,0 +1,25 @@
+{% extends "fragment/framePage.html" %}
+    {% block background_block %}
+    <div class="parallax parallax2">
+        <div class="titre">Liste des patients en attente ...</div>
+    </div>
+    {% endblock %}
+
+    {% block body_block %}
+        {% block jumbotron_block %}
+            {% include "fragment/frameJumbotron.html" %}
+        {% endblock %}
+
+    <form role="form" method="GET" action="{% url target %}" style="margin-bottom: 8px;">
+        <div class="form-group">
+            {% comment %} <input type="hidden" name='action' value={{target}}> {% endcomment %}
+            <label for="patientInfo">Choisir un patient : </label> 
+            <select class="form-control" id='patientInfo' name='patientInfo' style="width: 140px">
+                {% for patient in patient_info %}
+                    <option>{{ patient.id}} : {{ patient.nom }} {{ patient.prenom }} : {{ patient.adresse }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </form>
+    {% endblock %}

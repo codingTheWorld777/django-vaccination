@@ -1,0 +1,26 @@
+{% extends "fragment/framePage.html" %}
+    {% block background_block %}
+    <div class="parallax parallax2">
+        <div class="titre">
+            Vous voulez ajouter un nouveau patient ? <br>
+            Allez-y !
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block body_block %}
+    {% block jumbotron_block %}
+        {% include "fragment/frameJumbotron.html" %}
+    {% endblock %}
+
+    {% csrf_token %}
+    <form role="form" method="POST" action="{% url 'patient:patientCreated' %}" style="margin-bottom: 8px;">
+        <div class="form-group">
+            <input type="hidden" name='action' value='patientCreated'>
+            <label for="id">nom : </label><input type="text" name='nom' size='45' value='Lennon'>
+            <label for="id">prenom : </label><input type="text" name='prenom' size='45' value='John'>
+            <label for="id">adresse : </label><input type="text" name='adresse' size='35' value='Paris'>
+        </div>
+        <button class="btn btn-primary" type="submit">Go</button>
+    </form>
+    {% endblock %}
