@@ -1,0 +1,41 @@
+{% extends "fragment/framePage.html" %}
+    {% block background_block %}
+    <div class="parallax parallax2">
+        <div class="titre">
+            Liste des rendez-vous ...
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block body_block %}
+    {% block jumbotron_block %}
+        {% include "fragment/frameJumbotron.html" %}
+    {% endblock %}
+    
+    <h4 style="color: #5a5050; margin-bottom: 24px;">Liste des rendez-vous disponibles: </h4>
+    <table class='table table-striped table-bordered table-hover'>
+        <thead>
+            <tr style='background-color: #AA6C39'>
+                <th scope='col'>nom</th>
+                <th scope='col'>prénom</th>
+                <th scope='col'>centre de vaccination</th>
+                <th scope='col'>adresse</th>
+                <th scope='col'>injection</th>
+                <th scope='col'>nom de vaccin</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for rdv in results %}
+                <tr>
+                    <td>{{ rdv.0 }}</td>
+                    <td>{{ rdv.1 }}</td>
+                    <td>{{ rdv.2 }}</td>
+                    <td>{{ rdv.3 }}</td>
+                    <td>{{ rdv.4 }}</td>
+                    <td>{{ rdv.5 }}</td>    
+                </tr>   
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
