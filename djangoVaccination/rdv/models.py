@@ -125,14 +125,15 @@ class ModelRdv(models.Model):
 
                 # **** 2.1) Il y a pas de rendez-vous ****
                 vaccinInfo = ''
-                if len(vaccin_id) > 0:
+                if len(vaccin_id) == 0:
                     sql_command = "SELECT vaccin.id as vaccin_id, vaccin.label as vaccin_label, stock.quantite as quantite FROM vaccin JOIN stock ON vaccin.id = stock.vaccin_id WHERE stock.centre_id=%s AND stock.quantite=%s"
                     with connection.cursor() as cursor:
                         cursor.execute(sql_command, [centre_id, maxDose])
                         vaccinInfo = cursor.fetchall()[0]
                         vaccin_id = vaccinInfo[0]
+                        print("vaccin_id in stock", vaccin_id)
 
-                # **** 2.2) Au cont***
+                # **** 2.2) Au contraire...: ***
                 else:
                     vaccin_id = vaccin_id[0][0]
 
@@ -161,7 +162,7 @@ class ModelRdv(models.Model):
                 with connection.cursor() as cursor:
                     cursor.execute(sql_command, [quantite, centre_id, vaccin_id])
 
-                results = [centre_label, vaccinInfo['vaccin_label']]
+                results = [centre_label, vaccinInfo[1]]
                 return results
             except Exception:
                 print("ERROR")

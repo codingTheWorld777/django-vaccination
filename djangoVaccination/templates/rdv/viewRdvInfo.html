@@ -1,0 +1,18 @@
+<h4 style='color: #5a5050; margin-bottom: 24px;'>{{ patientInfo }} veut prendre un rendez-vous pour vacciner. Ajoutez un nouveau rendez-vous: </h4>   
+<form role='form' method="GET" action="{% url 'rdv:setRdv' %}" style="margin-bottom: 8px;">
+    <div class='form-group'>
+        {% comment %} <input type='hidden' name='action' value='setRdv'> {% endcomment %}
+        <input type='hidden' name='patientId' value={{ patientId }}>
+        <label for='centreInfo'>Choisir le centre où vous voulez vacciner: </label> 
+        <select class='form-control' id='centreInfo' name='centreInfo' style='width: 140px'>      
+        {% for center in activeCenter %}
+            <option>
+                {{ center.0 }} : {{ center.1 }} : {{ center.2 }}
+            </option>
+        {% endfor %}
+        {{ activeCenter }}
+        </select>
+    </div>
+    <button class='btn btn-primary' type='submit'>Submit form</button>
+</form>
+

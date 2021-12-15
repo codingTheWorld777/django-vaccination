@@ -31,21 +31,26 @@
         </thead>
 
         <tbody>
-            {% if results|length > 0 %} 
-                <tr><td>%s</td><td>%s</td><td>%s</td><td>%d</td></tr> $centre_label, $centre_adresse, $results[1], $injection)
-            {% endif %}
+        {% if results|length > 0 %} 
+            <tr>
+                <td>{{ centre_label }}</td>
+                <td>{{ centre_adresse }}</td>
+                <td>{{ results.1 }}</td>
+                <td>{{ injection }}</td>
+            </tr> 
+        {% endif %}
         </tbody>
     </table>
 
-    {% if results != -1 %} {
-        {% if results|length > 0 %} {
-            <h3 style='margin-bottom: 20px;'>Vous avez réussi à prendre un rendez-vous au centre $centre_label. <br>
-                Vous serez vacciné(e) le vaccin $results[1].</h3>
+    {% if results != None %} 
+        {% if results|length > 0 %} 
+            <h3 style='margin-bottom: 20px;'>Vous avez réussi à prendre un rendez-vous au centre {{ centre_label }}. <br>
+                Vous serez vacciné(e) le vaccin {{ results.1 }}.</h3>
         {% else %}
             <h3 style='margin-bottom: 20px; '>Vous avez déjà pris un rendez-vous. Veuillez revenir à la page d'accueil. <br></h3>
         {% endif %}
     {% else %}
-        <h3 style='margin-bottom: 20px; '>Le centre $centre_label n'a aucune vaccin de ve type. Veuillez attendre notre nouvelle nofitication.<br></h3>
+        <h3 style='margin-bottom: 20px; '>Le centre {{ centre_label }} n'a aucune vaccin de ve type. Veuillez attendre notre nouvelle nofitication.<br></h3>
     {% endif %}
     
     <a href="{% url 'index' %}" class='btn btn-primary' style='margin-bottom:7px;' >Page accueil</a>

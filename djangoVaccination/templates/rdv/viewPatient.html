@@ -14,7 +14,7 @@
 
     <form role="form" method="GET" action="{% url target %}" style="margin-bottom: 8px;">
         <div class="form-group">
-            <input type="hidden" name='action' value={{target}}>
+            {% comment %} <input type="hidden" name='action' value={{target}}> {% endcomment %}
             <label for="id">View patient : </label> 
             <select class="form-control" id='patientInfo' name='patientInfo' style="width: 140px">
                 {% for patient in results %}

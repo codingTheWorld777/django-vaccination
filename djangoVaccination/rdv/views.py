@@ -32,12 +32,22 @@ def rdvPropos(request):
         
         numberOfDose = patient_injection = centerByVaccin = ''   # celles pour bien savoir si le patient doit vacciner encore une fois ou pas
         if len(results) > 0:
-            numberOfDose =  ModelRdv.getDoseNumberOfVaccin(results[0][5]) 
-            patient_injection = results[len(results) - 1][4]
+            numberOfDose =  int(ModelRdv.getDoseNumberOfVaccin(results[0][5]))
+            patient_injection = int(results[len(results) - 1][4])
             centerByVaccin = ModelRdv.getCenterByVaccin(results[0][5])
 
-        info_dict = {"numberOfDose": numberOfDose, "patient_injection": patient_injection, "centerByVaccin": centerByVaccin,}
-        print(info_dict, "INFO")
+
+        patientId = re.split(":", patientInfo)[0]
+        patientInfo = patientInfo[4:]      
+        if len(results) > 0:
+            if numberOfDose > patient_injection:  
+                activeCenter = centerByVaccin                
+
+        info_dict = {
+                        "results": results, "numberOfDose": numberOfDose, "patientInfo": patientInfo, "patient_injection": patient_injection, 
+                        "patientId": patientId, "centerByVaccin": centerByVaccin, "activeCenter": activeCenter,
+                    }
+                    
         return render(request, "rdv/viewRdvPropos.html", context=info_dict)
 
 
@@ -49,7 +59,10 @@ def setRdv(request):
         centre_label = re.split(":", request.GET['centreInfo'])[1].strip()
         centre_adresse = re.split(":", request.GET['centreInfo'])[2].strip()
         injection = int(ModelRdv.getInjection(patient_id)) + 1
+        print("injection", injection)
         
         results = ModelRdv.setRdv(centre_id, centre_label, patient_id, injection)
-        return render(request, "rdv/viewSetRdv.html", context={"results": results})
+        results_dict = { "results": results, "centre_label": centre_label, "centre_adresse": centre_adresse, "injection": injection }
+
+        return render(request, "rdv/viewSetRdv.html", context=results_dict)
    

@@ -3,13 +3,13 @@ const parallaxBg = document.getElementsByClassName("parallax")[0];
 let title = document.getElementsByClassName("titre")[0];
 title = (title === undefined) ? "" : title.innerHTML;
 const imageBg = [
-    'url("../images/vaccin_1.jpeg")',
-    'url("../images/vaccin_2.jpeg")',
-    'url("../images/vaccin_3.jpeg")',
-    'url("../images/vaccin_4.jpeg")',
-    'url("../images/vaccin_5.jpeg")',
-    'url("../images/vaccin_6.jpeg")',
-    'url("../images/vaccin_7.jpeg")',
+    'url("/static/images/vaccin_1.jpeg")',
+    'url("/static/images/vaccin_2.jpeg")',
+    'url("/static/images/vaccin_3.jpeg")',
+    'url("/static/images/vaccin_4.jpeg")',
+    'url("/static/images/vaccin_5.jpeg")',
+    'url("/static/images/vaccin_6.jpeg")',
+    'url("/static/images/vaccin_7.jpeg")',
 ];
 let imageId = 0, bg;
 

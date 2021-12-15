@@ -73,7 +73,7 @@ body {
 
 .parallax {
     /* The image used */
-    background-image: url("../images/vaccin_1.jpeg");
+    background-image: url(../images/vaccin_1.jpeg);
 
     /* Full height */
     height: 70%;
